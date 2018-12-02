@@ -3,6 +3,10 @@
 (use 'clojure.java.io)
 (use '[clojure.string :only (split)])
 
+(defn split-letters
+  [str]
+  (split str #""))
+
 (defn get-lines
   "read file into collection"
   [fname]
