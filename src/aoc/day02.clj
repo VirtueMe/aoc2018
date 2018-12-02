@@ -62,18 +62,22 @@
   (map split-letters input))
 
 (defn count-letters-list
+  "Count all occurances of letters in string"
   [input]
   (map count-words (make-letters-lists input)))
 
 (defn pair-values
+  "Return a pair of :2 :3 with the corresponding count value 0 or 1"
   [list]
   { :2 (if (has-value list 2) 1 0) :3 (if (has-value list 3) 1 0)})
 
 (defn filter-letters
+  "Maps string to pair values"
   [input]
   (map pair-values (count-letters-list input)))
 
 (defn solve-part1-solution2
+  "Solves the puzzle"
   [input]
   (check-sum (reduce #(merge-with + %1 %2) (filter-letters input02)))
 
