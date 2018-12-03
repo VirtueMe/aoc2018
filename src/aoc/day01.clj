@@ -25,14 +25,14 @@
           newSum
           (recur newSum (rest list) (conj sums newSum)))))))
 
-(defn solve
+(defn solve01-1
   "solve the day01 puzzle part 1"
   ([]
     (println (calculate input01)))
   ([input]
     (calculate input)))
     
-(defn solve2
+(defn solve01-2
   "solve the day01 puzzle part 2"
   ([]
     (println (findDuplicate input01)))

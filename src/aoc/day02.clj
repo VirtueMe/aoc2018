@@ -12,7 +12,8 @@
 
 (defn count-words
   [words-to-count]
-  (reduce record-word-count {} words-to-count))
+  ;; (reduce record-word-count {} words-to-count)
+  (frequencies words-to-count))
 
 ;; PART 1
 
@@ -79,7 +80,7 @@
 (defn solve-part1-solution2
   "Solves the puzzle"
   [input]
-  (check-sum (reduce #(merge-with + %1 %2) (filter-letters input02)))
+  (checksum (reduce #(merge-with + %1 %2) (filter-letters input))))
 
 ;; Part 2
 (defn remove-at
@@ -117,13 +118,13 @@
 
 ;; Results
 
-(defn solve
+(defn solve02-1
   ([]
-    (checksum (count-them (create-count-maps input02))))
+    (solve-part1-solution2 input02))
   ([input]
-    (checksum (count-them (create-count-maps input)))))
+    (solve-part1-solution2 input)))
 
-(defn solve2
+(defn solve02-2
   ([]
     (find-box-match input02))
   ([input]
