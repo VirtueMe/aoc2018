@@ -5,11 +5,6 @@
 
 (def input02 (vec (get-lines "days/02.txt")))
 
-;; Helpers
-(defn record-word-count
-  [memo word]
-  (assoc memo word (inc (memo word 0))))
-
 (defn count-words
   [words-to-count]
   ;; (reduce record-word-count {} words-to-count)
@@ -59,6 +54,7 @@
 
 ;; Second solution
 (defn make-letters-lists
+  "Split string to letters"
   [input]
   (map split-letters input))
 

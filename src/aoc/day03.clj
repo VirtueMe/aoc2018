@@ -19,10 +19,15 @@
   [input]
   (let [matcher (re-matcher claim-regex input)]
     (if (.matches matcher)
-      { :name (.group matcher "name") :x (Integer. (.group matcher "x")) :y (Integer. (.group matcher "y")) :w (Integer. (.group matcher "w")) :h (Integer. (.group matcher "h")) :size (* (Integer. (.group matcher "w")) (Integer. (.group matcher "h")))}
+      { :name (.group matcher "name") :x (Integer. (.group matcher "x")) :y (Integer. (.group matcher "y")) :w (Integer. (.group matcher "w")) :h (Integer. (.group matcher "h")) }
       nil)))
 
 (def isfree? (partial = free))
+
+(defn size-el
+  ""
+  [el]
+  (* (el :h) (el :w)))
 
 (defn apply-claim-row
   "apply occupied columns in row"
@@ -56,14 +61,14 @@
 (defn get-layout
   ""
   [claims]
-    (let [result (map-claims claims)]
-      (frequencies result)))
+  (let [result (map-claims claims)]
+    (frequencies result)))
       
 (defn calculate-size
   "calculate the overlapping area"
   [input]
-    (let [result (get-layout (create-claims-list input))]
-        (result hit)))
+  (let [result (get-layout (create-claims-list input))]
+      (result hit)))
 
 ;; Part 2
 
@@ -72,7 +77,7 @@
   (let [claim (first (filter #(= (% :name) (item 0)) claims))]
     (if (nil? claim )
       false
-      (= (claim :size) (item 1)))))
+      (= (size-el claim) (item 1)))))
     
 (defn get-intact
   ""
