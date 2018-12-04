@@ -7,6 +7,10 @@
   [str]
   (split str #""))
 
+(defn split-words
+  [str]
+  (split str #" "))
+
 (defn get-lines
   "read file into collection"
   [fname]
