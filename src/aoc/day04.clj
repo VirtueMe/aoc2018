@@ -5,10 +5,12 @@
 
 (def input04 (get-lines "days/04.txt"))
 
+(defstruct event :date :event)
+
 (defn create-event
   ""
   [string]
-  { :date (subs string 1 17) :event (split-words (subs string 19 ))})
+  (struct event (subs string 1 17) (split-words (subs string 19 ))))
 
 (defn map-events 
   ""
