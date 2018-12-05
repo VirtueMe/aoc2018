@@ -137,12 +137,17 @@
   [item1 item2]
   (if (> (:sleep item1) (:sleep item2))
     item1
-    item2))  
+    item2)) 
+
+(defn create-sleepers
+  ""
+  [input]
+  (vals (reduce #(merge-events %1 %2) {} (remove-empty (map map-to-guard-hour (events-by-guard (map-events (sort input))))))))
 
 (defn find-sleeper
   ""
   [input]
-  (reduce #(compare-sleep %1 %2) (map add-sleep-time (vals (reduce #(merge-events %1 %2) {} (remove-empty (map map-to-guard-hour (events-by-guard (map-events (sort input))))))))))
+  (reduce #(compare-sleep %1 %2) (map add-sleep-time (create-sleepers input))))
 
 ;; Part 2
 (defn add-sleep-time-minute
@@ -160,7 +165,7 @@
 (defn find-sleeper-min
   ""
   [input]
-  (reduce #(compare-sleep-min %1 %2) (map add-sleep-time-minute (vals (reduce #(merge-events %1 %2) {} (remove-empty (map map-to-guard-hour (events-by-guard (map-events (sort input))))))))))
+  (reduce #(compare-sleep-min %1 %2) (map add-sleep-time-minute (create-sleepers input))))
 
 (defn calcsum-min
   ""
