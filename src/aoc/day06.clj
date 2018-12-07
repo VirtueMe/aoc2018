@@ -89,6 +89,12 @@
         ;; (get-edge w h board)
         (let [current (first list)]
           (recur (map-indexed #(walk % w %2 current) board) (rest list)))))))
+
+(defn calc-max-area
+  ""
+  [input]        
+  (apply max (vals (map-board input))))
+  
 ;; Part 2
 (defn if-limit
   ""
@@ -111,9 +117,9 @@
 (defn solve06-1
   ""
   ([]
-    (map-board input06))
+    (calc-max-area input06))
   ([input]
-    (map-board input)))
+    (calc-max-area input)))
 
 (defn solve06-2
   ""
