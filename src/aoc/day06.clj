@@ -3,7 +3,6 @@
 
 (use 'aoc.core)
 
-
 (defn to-int
   ""
   [input]
@@ -21,7 +20,6 @@
     (list \D 3 4)
     (list \E 5 5)
     (list \F 8 9)))
-
 
 (def nohit \.)
 
